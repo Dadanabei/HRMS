@@ -1,0 +1,256 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HRMS.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+    <meta name="viewpor" content="width=device-width, initial-scale=1">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/jquery-ui.css" rel="stylesheet" />
+
+    <link href="vendor/datatables/css/dataTables.uikit.min.css" rel="stylesheet" />
+    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    
+    <script src="/js/jquery-1.7.1.min.js"></script>
+
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.pt-BR.js"></script>
+    <script src="/datatables/jquery.dataTables-min.js"></script>
+    <script src="/datatables/jquery.dataTables.js"></script>
+
+
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/vendor/raphael/raphael.min.js"></script>
+    <script src="/vendor/morrisjs/morris.min.js"></script>
+
+    <script src="/js/jquery.blockUI.js"></script>
+
+    <script></script>
+    <style type="text/css">
+        .nav-side-menu {
+            overflow: auto;
+            font-family: verdana;
+            font-size: 12px;
+            font-weight: 200;
+            background-color: #f8f8f8;
+            position: absolute;
+            width: 250px;
+            height: auto;
+            color: #e1ffff;
+        }
+
+            .nav-side-menu .brand {
+                background-color: #fff;
+                line-height: 50px;
+                display: block;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .nav-side-menu .toggle-btn {
+                display: none;
+            }
+
+            .nav-side-menu ul, .nav-side-menu li {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+                line-height: 35px;
+                cursor: pointer;
+            }
+
+                .nav-side-menu ul :not(collapsed) .arrow:before, .nav-side-menu li :not(collapsed) .arrow:before {
+                    font-family: FontAwesome;
+                    content: "\f078";
+                    display: inline-block;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    vertical-align: middle;
+                    float: right;
+                }
+
+                .nav-side-menu ul .active, .nav-side-menu li .active {
+                    border-left: 3px solid #d19b3d;
+                    background-color: #e7e7e7;
+                }
+
+                .nav-side-menu ul .sub-menu li.active, .nav-side-menu li .sub-menu li.active {
+                    color: #0094ff;
+                }
+
+                    .nav-side-menu ul .sub-menu li.active a, .nav-side-menu li .sub-menu li.active a {
+                        color: #0094ff;
+                    }
+
+                .nav-side-menu ul .sub-menu li, .nav-side-menu li .sub-menu li {
+                    background-color: #fff;
+                    border: none;
+                    line-height: 28px;
+                    border-bottom: 1px solid #fff;
+                    margin-left: 0px;
+                }
+
+                    .nav-side-menu ul .sub-menu li:hover, .nav-side-menu li .sub-menu li:hover {
+                        background-color: #337ab7;
+                    }
+
+                    .nav-side-menu ul .sub-menu li:before, .nav-side-menu li .sub-menu li:before {
+                        font-family: FontAwesome;
+                        content: "\f105";
+                        display: inline-block;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        vertical-align: middle;
+                    }
+
+            .nav-side-menu li {
+                padding-left: 0px;
+                border-left: 3px solid #e7e7e7;
+                border-bottom: 1px solid #fff;
+            }
+
+                .nav-side-menu li a {
+                    text-decoration: none;
+                    color: #000;
+                }
+
+                    .nav-side-menu li a i {
+                        padding-left: 10px;
+                        width: 20px;
+                        padding-right: 20px;
+                    }
+
+                .nav-side-menu li:hover {
+                    border-left: 3px solid #ffffff;
+                    background-color: #ffffff;
+                    -webkit-transition: all 1s ease;
+                    -moz-transition: all 1s ease;
+                    -o-transition: all 1s ease;
+                    -ms-transition: all 1s ease;
+                    transition: all 1s ease;
+                }
+
+        @media (max-width: 767px) {
+            .nav-side-menu {
+                position: relative;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+                .nav-side-menu .toggle-btn {
+                    display: block;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    z-index: 10 !important;
+                    padding: 3px;
+                    background-color: #ffffff;
+                    color: #000;
+                    width: 40px;
+                    text-align: center;
+                }
+
+            .brand {
+                text-align: left !important;
+                font-size: 22px;
+                padding-left: 20px;
+                line-height: 50px !important;
+            }
+        }
+
+        @media (min-width: 767px) {
+            .nav-side-menu .menu-list .menu-content {
+                display: block;
+            }
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
+     <script src="/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+        rel="stylesheet">
+    <script type="text/javascript">
+        $(function () {
+            $('li[data-toggle="collapse"]').each(function () {
+                if ($(this).next('ul').length == 0) {
+                    $(this).removeAttr('data-toggle').removeAttr('data-target').removeClass('collapsed');
+                    $(this).find('span.arrow').remove();
+                }
+            });
+            $('ul#menu-content > ul').on('show.bs.collapse', function (e, obj) {
+                $("ul#menu-content > ul").not(this).removeClass("in");
+                var currentHead = $(this).prev("li");
+                $("ul#menu-content > li").not(currentHead).removeClass("active");
+                $(currentHead).addClass("active");
+            })
+        });
+    </script>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div style="margin-top: 1%; width: 40%">
+                <img src="/Images/HRMS.png" style="width: 40%; height: 25%" />
+
+            </div>
+            <div>
+                <a class="navbar-brand"></a>
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="#"><i class="fa fa-user fa-fw"></i>
+                            <label id="lblUser"></label>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="nav-side-menu">
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <asp:Repeater ID="rptCategories" runat="server" OnItemDataBound="rptMenu_OnItemBound">
+                            <ItemTemplate>
+                                <li data-toggle="collapse" data-target='#<%#Eval("Title") %>' class="collapsed"><a
+                                    href='<%#Eval("Url") %>'></i>
+                            <%#Eval("Title") %><span class="arrow"></span></a> </li>
+                                <asp:Literal ID="ltrlSubMenu" runat="server"></asp:Literal>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

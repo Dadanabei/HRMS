@@ -23,9 +23,9 @@ namespace HRMS.Master
         {
             try
             {
-                //DataModel.Bank _oBank = new DataModel.Bank();
-                //JavaScriptSerializer serializer = new JavaScriptSerializer();
-                //_oBank = serializer.Deserialize<DataModel.Bank>(oBank);
+            //    DataModel.Bank _oBank = new DataModel.Bank();
+            //    JavaScriptSerializer serializer = new JavaScriptSerializer();
+            //    _oBank = serializer.Deserialize<DataModel.Bank>(oBank);
                 ExecuteData.InsertBank(BankCode,BankName);
             }
             catch (Exception ex)

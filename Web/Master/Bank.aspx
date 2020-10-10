@@ -48,7 +48,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="DataMobil">
+                            <table class="table table-striped table-bordered table-hover" id="DataBank">
                                 <thead>
                                     <tr>
                                         <th>Bank Code</th>
@@ -66,6 +66,51 @@
         </div>
     </div>
     <script>
+
+        var ListData = '<%= _ListData %>'
+
+        var oData = $('#DataBank').dataTable({
+            "sPaginationType": "full_numbers",
+            "bSort": false,
+            "bFilter": false,
+            "bPaginate": false,
+            "aoColumns": [
+
+                
+                { "mDataProp": "BankCode" },
+                { "mDataProp": "BankName" },
+                { "mDataProp": "ID" }
+
+            ]
+        });
+
+
+
+        var glbid = "0";
+
+        var obj = (ListData == '' ? [] : jQuery.parseJSON(ListData));
+
+        if (obj.length > 0) {
+
+
+            var Bank = new Object();
+
+            for (var i = 0; i < obj.length; i++) {
+
+
+                Bank.BankCode = obj[i]["BankCode"];
+                Bank.BankName = obj[i]["BankName"];
+
+                Bank.ID = "<img src='../css/icons/16/edit.png' title='Edit'  id='" + obj[i]["BankCode"] + "'  class='edit'/>" + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    "<img src='../css/icons/16/cross.png' title='Hapus'  id='" + obj[i]["BankCode"] + "'  class='delete'/>";
+
+
+                oData.fnAddData(Bank);
+            }
+
+
+        }
+
         $('#btnSave').on('click', function () {
 
             var Bank = new Object();
@@ -88,14 +133,15 @@
 
                 $.ajax({
                     type: "POST",
+                    async: true,
                     contentType: "application/json; charset=utf-8",
                     url: "Bank.aspx/Save",
                     data: "{'BankCode': '" + BankCode + "','BankName':'" + BankName +"'}",
                     // data: JSON.stringify(oBank),
                     dataType: "json",
-                    success: function (e) {
-                        alert("Data Bank tersimpan");
-                        location.reload();
+                    success: function (data, textStatus, xhr) {
+                        alert(data);
+                        //location.reload();
 
                     },
                     error: function (xhr, textStatus, error) {

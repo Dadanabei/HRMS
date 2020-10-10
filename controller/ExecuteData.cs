@@ -49,6 +49,25 @@ namespace Transforman.controller
 
 
         }
+        public static void InsertRate(string Code, String Name)
+        {
+            DataTable dt = new DataTable();
+            database db = new database();
+            db.ClearParameters();
+
+            db.SPName = "InsertDataRateType";
+            db.AddParameters("@Rate_Type", SqlDbType.VarChar, Code);
+            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, Name);
+          
+
+
+            DataSet ds = db.ExecuteSP();
+            db.Dispose();
+
+
+
+        }
+
         //public static void UpdateApproval(Guid Id,int Status,string NoPek)
         //{
         //    DataTable dt = new DataTable();

@@ -55,9 +55,9 @@ namespace Transforman.controller
             database db = new database();
             db.ClearParameters();
 
-            db.SPName = "InsertDataRateType";
-            db.AddParameters("@Rate_Type", SqlDbType.VarChar, Code);
-            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, Name);
+            db.SPName = "InsertDataCity";
+            db.AddParameters("@City_Code", SqlDbType.VarChar, Code);
+            db.AddParameters("@City_Name", SqlDbType.VarChar, Name);
           
 
 
@@ -69,7 +69,19 @@ namespace Transforman.controller
 
         internal static void InsertRate(string rateType, string rateDesc)
         {
-            throw new NotImplementedException();
+
+            DataTable dt = new DataTable();
+            database db = new database();
+            db.ClearParameters();
+
+            db.SPName = "InsertDataRateType";
+            db.AddParameters("@Rate_Type", SqlDbType.VarChar, rateType);
+            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, rateDesc);
+
+
+
+            DataSet ds = db.ExecuteSP();
+            db.Dispose();
         }
 
 

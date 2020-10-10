@@ -49,6 +49,30 @@ namespace Transforman.controller
 
 
         }
+        public static void InsertCity(string Code, String Name)
+        {
+            DataTable dt = new DataTable();
+            database db = new database();
+            db.ClearParameters();
+
+            db.SPName = "InsertDataCityCode";
+            db.AddParameters("@CityCode", SqlDbType.VarChar, Code);
+            db.AddParameters("@CityName", SqlDbType.VarChar, Name);
+          
+
+            DataSet ds = db.ExecuteSP();
+            db.Dispose();
+
+
+
+        }
+
+        internal static void InsertRate(string rateType, string rateDesc)
+        {
+            throw new NotImplementedException();
+        }
+
+
         //public static void UpdateApproval(Guid Id,int Status,string NoPek)
         //{
         //    DataTable dt = new DataTable();

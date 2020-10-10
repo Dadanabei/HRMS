@@ -36,7 +36,7 @@ namespace Transforman.controller
             database db = new database();
             db.ClearParameters();
 
-            db.SPName = "SP_InsertBank";
+            db.SPName = "InsertDataBankCode";
             db.AddParameters("@BankCode", SqlDbType.VarChar, Code);
             db.AddParameters("@BankName", SqlDbType.VarChar, Name);
             db.AddParameters("@CreatedBy", SqlDbType.VarChar, "");

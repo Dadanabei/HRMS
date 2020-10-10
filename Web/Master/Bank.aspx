@@ -88,14 +88,14 @@
 
                 $.ajax({
                     type: "POST",
-                    contentType: "application/json",
+                    contentType: "application/json; charset=utf-8",
                     url: "Bank.aspx/Save",
-                    data: "{'BankCode':'ok','BankName':'ok'}",
+                    data: "{'BankCode': '" + BankCode + "','BankName':'" + BankName +"'}",
                     // data: JSON.stringify(oBank),
                     dataType: "json",
                     success: function (e) {
-                        alert("");
-                        //location.reload();
+                        alert("Data Bank tersimpan");
+                        location.reload();
 
                     },
                     error: function (xhr, textStatus, error) {

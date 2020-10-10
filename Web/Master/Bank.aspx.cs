@@ -8,15 +8,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Transforman.controller;
 using HRMS.Master;
-
+using Newtonsoft.Json;
 
 namespace HRMS.Master
 {
     public partial class Bank : System.Web.UI.Page
     {
+        protected string _ListData;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            _ListData = JsonConvert.SerializeObject(GetDataList.GetDataBank());
         }
         [WebMethod]
         public static string Save(string BankCode, string BankName)
@@ -33,7 +34,7 @@ namespace HRMS.Master
 
                 return ex.Message;
             }
-            return "";
+            return "succes";
         }
     }
 

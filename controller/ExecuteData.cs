@@ -55,14 +55,14 @@ namespace Transforman.controller
             database db = new database();
             db.ClearParameters();
 
-            db.SPName = "InsertDataCityCode";
-            db.AddParameters("@CityCode", SqlDbType.VarChar, Code);
-            db.AddParameters("@CityName", SqlDbType.VarChar, Name);
+            db.SPName = "InsertDataRateType";
+            db.AddParameters("@Rate_Type", SqlDbType.VarChar, Code);
+            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, Name);
           
+
 
             DataSet ds = db.ExecuteSP();
             db.Dispose();
-
 
 
         }

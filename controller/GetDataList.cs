@@ -31,11 +31,20 @@ namespace Transforman.controller
             db.Dispose();
             return ds.Tables[0];
         }
-       
-        
+        public static DataTable GetDataCity()
+        {
+            database db = new database();
+            db.ClearParameters();
+            db.SPName = "GetDataCity";
 
-        
-        
-        
+            DataSet ds = db.ExecuteSP();
+            db.Dispose();
+            return ds.Tables[0];
+        }
+
+
+
+
+
     }
 }

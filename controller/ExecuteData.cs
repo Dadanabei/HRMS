@@ -49,15 +49,15 @@ namespace Transforman.controller
 
 
         }
-        public static void InsertRate(string Code, String Name)
+        public static void InsertCity(string Code, String Name)
         {
             DataTable dt = new DataTable();
             database db = new database();
             db.ClearParameters();
 
-            db.SPName = "InsertDataRateType";
-            db.AddParameters("@Rate_Type", SqlDbType.VarChar, Code);
-            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, Name);
+            db.SPName = "InsertDataCity";
+            db.AddParameters("@City_Code", SqlDbType.VarChar, Code);
+            db.AddParameters("@City_Name", SqlDbType.VarChar, Name);
           
 
 
@@ -65,8 +65,25 @@ namespace Transforman.controller
             db.Dispose();
 
 
-
         }
+
+        internal static void InsertRate(string rateType, string rateDesc)
+        {
+
+            DataTable dt = new DataTable();
+            database db = new database();
+            db.ClearParameters();
+
+            db.SPName = "InsertDataRateType";
+            db.AddParameters("@Rate_Type", SqlDbType.VarChar, rateType);
+            db.AddParameters("@Rate_Type_Description", SqlDbType.VarChar, rateDesc);
+
+
+
+            DataSet ds = db.ExecuteSP();
+            db.Dispose();
+        }
+
 
         //public static void UpdateApproval(Guid Id,int Status,string NoPek)
         //{
